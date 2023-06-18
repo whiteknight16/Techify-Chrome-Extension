@@ -1,0 +1,14 @@
+body{
+    min-width: 500px;
+    border: 0;
+    margin: 0;
+    background-color: aliceblue;
+}
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+img{
+    box-shadow: 3px black;
+}

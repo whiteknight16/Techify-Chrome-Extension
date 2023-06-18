@@ -1,0 +1,13 @@
+{
+    "name":"Techify",
+     "version":"1.0.0",
+     "description":"Get your tech news",
+     "manifest_version":3,
+     "author":"Harsh Pandey",
+     "action":{
+        "default_popup":"./index.html",
+        "default_title":"Techify",
+        "default_icon":"./favicon-32x32.png"
+     }
+
+}
