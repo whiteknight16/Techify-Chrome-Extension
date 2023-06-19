@@ -21,3 +21,6 @@ fetch(req)
         console.log(news_arr);
     })
     .catch(e=> console.log(e));
+
+
+write here 
