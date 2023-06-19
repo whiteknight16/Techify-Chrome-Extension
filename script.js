@@ -4,17 +4,16 @@ const url = 'https://gnews.io/api/v4/top-headlines?category=' + category + '&lan
 
 // API DOCUMENTATION: "https://gnews.io/docs/v4#top-headlines-endpoint"
 
-var req = new Request(url);
-
-let news_arr=[]
-
+let req = new Request(url);
+let i=0;
+let newsData;
 fetch(req)
     .then(data=>data.json())
     .then(data=>{
         // if (data.status!=="ok") return
-        console.log(data);
+        // console.log(data.articles);
+        newsData=data.articles
     })
     .catch(e=> console.log(e));
 
-
-write here 
+console.log(data.articles);
