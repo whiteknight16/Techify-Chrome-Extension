@@ -5,15 +5,31 @@ const url = 'https://gnews.io/api/v4/top-headlines?category=' + category + '&lan
 // API DOCUMENTATION: "https://gnews.io/docs/v4#top-headlines-endpoint"
 
 let req = new Request(url);
-let i=0;
-let newsData;
-fetch(req)
-    .then(data=>data.json())
-    .then(data=>{
-        // if (data.status!=="ok") return
-        // console.log(data.articles);
-        newsData=data.articles
-    })
-    .catch(e=> console.log(e));
-
-console.log(data.articles);
+let i = -1;
+const next = () => {
+    fetch(req)
+        .then(data => data.json())
+        .then(data => {
+            i++;
+            document.querySelector("#news-image").setAttribute("src", `${data.articles[i % data.articles.length].image}`)
+            document.querySelector("h3").innerText = data.articles[i % data.articles.length].title;
+            document.querySelector("p").innerText = data.articles[i % data.articles.length].content;
+            document.querySelector("#url").setAttribute("href", `${data.articles[i % data.articles.length].url}`)
+        })
+        .catch(e => console.log(e));
+}
+const previous = () => {
+    fetch(req)
+        .then(data => data.json())
+        .then(data => {
+            i--;
+            if (i < 0) {
+                i = data.articles.length - 1;
+            }
+            document.querySelector("h3").innerText = data.articles[i % data.articles.length].title;
+            document.querySelector("p").innerText = data.articles[i % data.articles.length].content;
+            document.querySelector("#url").setAttribute("href", `${data.articles[i % data.articles.length].url}`)
+        })
+        .catch(e => console.log(e));
+}
+next()
